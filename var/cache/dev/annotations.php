@@ -100,6 +100,10 @@ return [[
 '[C]App%5CEntity%5CUser%23setPassword' => 1,
 'App%5CEntity%5CUser%23eraseCredentials' => 0,
 '[C]App%5CEntity%5CUser%23eraseCredentials' => 1,
+'App%5CEntity%5CUser%23getPlainPassword' => 0,
+'[C]App%5CEntity%5CUser%23getPlainPassword' => 1,
+'App%5CEntity%5CUser%23setPlainPassword' => 0,
+'[C]App%5CEntity%5CUser%23setPlainPassword' => 1,
 'App%5CEntity%5CUser%23getPost' => 0,
 '[C]App%5CEntity%5CUser%23getPost' => 1,
 'App%5CEntity%5CUser%23addPost' => 0,
@@ -114,6 +118,8 @@ return [[
 '[C]App%5CEntity%5CUser%24roles' => 1,
 'App%5CEntity%5CUser%24password' => 0,
 '[C]App%5CEntity%5CUser%24password' => 1,
+'App%5CEntity%5CUser%24plainPassword' => 0,
+'[C]App%5CEntity%5CUser%24plainPassword' => 1,
 'App%5CEntity%5CUser%24post' => 0,
 '[C]App%5CEntity%5CUser%24post' => 1,
 'Doctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController' => 0,
@@ -594,6 +600,6 @@ return [[
 ], [
 
 0 => [],
-1 => 1654008541,
+1 => 1654013204,
 
 ]];
