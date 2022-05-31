@@ -28,6 +28,7 @@ return [
                     .')'
                 .')'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:219)'
+                .'|/([^/]++)?(*:237)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -44,8 +45,9 @@ return [
             [['_route' => 'api_users_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_identifiers' => ['id'], '_api_has_composite_identifier' => false, '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'api_users_patch_item', '_controller' => 'api_platform.action.patch_item', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_identifiers' => ['id'], '_api_has_composite_identifier' => false, '_api_item_operation_name' => 'patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        219 => [
-            [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
+        219 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        237 => [
+            [['_route' => 'home', 'reactRouting' => null, '_controller' => 'App\\Controller\\DefaultController::index'], ['reactRouting'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
