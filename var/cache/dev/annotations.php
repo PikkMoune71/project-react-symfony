@@ -54,6 +54,10 @@ return [[
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%23addLink' => 1,
 'Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 0,
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 1,
+'App%5CController%5CDefaultController' => 0,
+'[C]App%5CController%5CDefaultController' => 1,
+'App%5CController%5CDefaultController%23index' => 2,
+'[C]App%5CController%5CDefaultController%23index' => 1,
 'App%5CEntity%5CPost' => 0,
 '[C]App%5CEntity%5CPost' => 1,
 'App%5CEntity%5CPost%23getId' => 0,
@@ -90,6 +94,8 @@ return [[
 '[C]App%5CEntity%5CUser%23setEmail' => 1,
 'App%5CEntity%5CUser%23getUserIdentifier' => 0,
 '[C]App%5CEntity%5CUser%23getUserIdentifier' => 1,
+'App%5CEntity%5CUser%23getUsername' => 0,
+'[C]App%5CEntity%5CUser%23getUsername' => 1,
 'App%5CEntity%5CUser%23getRoles' => 0,
 '[C]App%5CEntity%5CUser%23getRoles' => 1,
 'App%5CEntity%5CUser%23setRoles' => 0,
@@ -600,6 +606,57 @@ return [[
 ], [
 
 0 => [],
-1 => 1654022230,
+1 => 1654160813,
+2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/{reactRouting}',
+                ],
+                'methods' => [
+                    [],
+                ],
+                'schemes' => [
+                    [],
+                ],
+                'name' => [
+                    'home',
+                ],
+                'requirements' => [
+                    [],
+                ],
+                'options' => [
+                    [],
+                ],
+                'defaults' => [
+                    [
+                        'reactRouting' => null,
+                    ],
+                ],
+                'host' => [
+                    null,
+                ],
+                'condition' => [
+                    null,
+                ],
+                'priority' => [
+                    null,
+                ],
+                'env' => [
+                    null,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
 
 ]];

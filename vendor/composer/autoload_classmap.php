@@ -507,6 +507,7 @@ return array(
     'ApiPlatform\\Core\\Validator\\EventListener\\ValidateListener' => $vendorDir . '/api-platform/core/src/Validator/EventListener/ValidateListener.php',
     'ApiPlatform\\Core\\Validator\\Exception\\ValidationException' => $vendorDir . '/api-platform/core/src/Validator/Exception/ValidationException.php',
     'ApiPlatform\\Core\\Validator\\ValidatorInterface' => $vendorDir . '/api-platform/core/src/Validator/ValidatorInterface.php',
+    'App\\Controller\\DefaultController' => $baseDir . '/src/Controller/DefaultController.php',
     'App\\DataPersister\\UserDataPersister' => $baseDir . '/src/DataPersister/UserDataPersister.php',
     'App\\Entity\\Post' => $baseDir . '/src/Entity/Post.php',
     'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
