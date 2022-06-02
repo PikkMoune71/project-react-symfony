@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import SignIn from "../components/signin/SignIn";
     
 class Home extends Component {
     
     render() {
         return (
            <div>
-               <h1>Home</h1>
+               <SignIn />
            </div>
         )
     }
