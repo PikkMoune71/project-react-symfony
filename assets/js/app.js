@@ -1,6 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import '../styles/app.css';
+import React, { Component, useState } from 'react'
+import { createRoot } from 'react-dom/client';
 import Home from '../components/Home';
-    
-ReactDOM.render(<Home />, document.getElementById('root'));
+
+function App() {
+    return (
+            <div>
+                <Home />
+            </div>
+    )
+  }
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App/>);
