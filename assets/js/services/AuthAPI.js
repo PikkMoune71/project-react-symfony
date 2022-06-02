@@ -8,8 +8,6 @@ function authenticate(credentials){
     .then(data => {
         window.localStorage.setItem("authToken", data.token)
         axios.defaults.headers["Authorization"] = "Bearer " + data.token
-
-        console.log(jwtDecode(data.token))
     })
 }
 

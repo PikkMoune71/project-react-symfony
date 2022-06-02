@@ -22,7 +22,6 @@ export const SignIn = () => {
 
     try{
       await authAPI.authenticate(credentials)
-      setIsAuthenticated(true)
     }catch(error){
       console.log(error)
     }
