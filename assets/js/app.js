@@ -1,11 +1,11 @@
 import React, { Component, useState } from 'react'
 import { createRoot } from 'react-dom/client';
-import RoutesApp from './Routes';
+import Home from './views/Home';
 
 function App() {
     return (
             <div>
-                <RoutesApp />
+              <Home />
             </div>
     )
   }

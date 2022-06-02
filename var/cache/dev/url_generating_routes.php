@@ -20,5 +20,6 @@ return [
     'api_users_patch_item' => [['id', '_format'], ['_controller' => 'api_platform.action.patch_item', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_identifiers' => ['id'], '_api_has_composite_identifier' => false, '_api_item_operation_name' => 'patch'], [], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '[^/\\.]++', 'id', true], ['text', '/api/users']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     'home' => [['reactRouting'], ['reactRouting' => null, '_controller' => 'App\\Controller\\DefaultController::index'], [], [['variable', '/', '[^/]++', 'reactRouting', true]], [], [], []],
+    'api_register' => [[], ['_controller' => 'App\\Controller\\SecurityController::register'], [], [['text', '/api/api/register']], [], [], []],
     'api_login_check' => [[], [], [], [['text', '/api/login']], [], [], []],
 ];
