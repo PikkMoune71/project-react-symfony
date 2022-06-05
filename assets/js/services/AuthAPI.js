@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 
 function authenticate(credentials){
     return axios.post(URL_LOGIN, credentials)
-    .then(res => res.data)
+    .then(res => console.log(res))
     .then(data => {
         window.localStorage.setItem("authToken", data.token)
         axios.defaults.headers["Authorization"] = "Bearer " + data.token
