@@ -1,13 +1,12 @@
 import React from 'react'
-import SignIn from '../components/signin/Signin'
-import SignUp from '../components/signup/SignUp'
-import Post from '../components/post/Post'
-import AuthAPI from '../services/AuthAPI'
+import Menu from '../components/menu/Menu'
 
 function Home() {
   return (
     <div>
-      {
+      <h2>Home</h2>
+      <Menu />
+      {/* {
         (AuthAPI.isAuthenticated() == true 
         ? <div>
             <Post />
@@ -18,9 +17,11 @@ function Home() {
         : <div>
             <SignIn />
             <p>Une fois cliquer sur le boutton "Connexion", <b>actualiser</b> la page pour voir les posts</p>
+
+            <SignUp />
           </div>
         )
-      }
+      } */}
     </div>
   )
 }

@@ -4,7 +4,6 @@ import React, {useState} from 'react'
 axios.defaults.baseURL = 'http://localhost:8000'
 
 function SignUp() {
-    const [inputErrorPseudo, setInputErrorPseudo] = useState('')
     const [inputErrorEmail, setInputErrorEmail] = useState('')
     const [inputErrorPassword, setInputErrorPassword] = useState('')
     const [inputErrorPasswordCopy, setInputErrorPasswordCopy] = useState('')
@@ -81,13 +80,13 @@ function SignUp() {
             <div>
                 <h2>Créer un compte</h2>
                 <form onSubmit={handleSubmit}>
-                <input
+                {/* <input
                     name="name"
                     type="text"
                     placeholder="Nom d'utilisateur"
                     onChange={(e) => onchange(e)}
                 />
-                <p>{inputErrorPseudo}</p>
+                <p>{inputErrorPseudo}</p> */}
                 <input
                     name="email"
                     type="email"

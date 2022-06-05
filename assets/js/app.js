@@ -1,11 +1,11 @@
-import React, { Component, useState } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client';
-import Home from './views/Home';
+import RoutesApp from './Routes';
 
 function App() {
     return (
             <div>
-              <Home />
+              <RoutesApp />
             </div>
     )
   }
