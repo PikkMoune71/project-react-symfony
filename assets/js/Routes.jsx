@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Routes, Route, Link, useNavigate} from 'react-router-dom'
 import SignIn from './components/signin/Signin'
 import SignUp from './components/signup/SignUp'
-import Home from './views/Home'
 import Post from './components/post/Post'
 import PrivateRoute from './components/PrivateRoute'
+import '../styles/app.css'
+import Home from './views/Home'
 
 const RoutesApp = () => {
     const useAuth = () => {
@@ -25,30 +26,30 @@ const RoutesApp = () => {
     }
   return (
         <div>
-            <h1>API Symfony React</h1>
-
-            <ul>
-                {
-                    user && <>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/posts">Posts</Link></li>
+            <div className='container_navbar'>
+                <h1>API Symfony React</h1>
+                <ul className='navbar'>
+                    {
+                        user && <>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/posts">Posts</Link></li>
+                        
+                            {
+                                location.pathname !== "/login" && <li><button onClick={logout}>Logout</button></li>
+                            }
+                        </>
+                    }
                     
-                        {
-                            location.pathname !== "/login" && <button onClick={logout}>Logout</button>
-                        }
-                    </>
-                }
-                
-            </ul>
-
-            <Routes>
-                <Route path="/login" element={<SignIn />} />
-                <Route path="/register" element={<SignUp />} />
-                <Route path="/" element={<PrivateRoute/>}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/posts" element={<Post />} />
-                </Route>
-            </Routes>
+                </ul>
+            </div>
+                <Routes>
+                    <Route path="/login" element={<SignIn />} />
+                    <Route path="/register" element={<SignUp />} />
+                    <Route path="/" element={<PrivateRoute/>}>   
+                        <Route path="/" element={<Home />} />
+                        <Route path="/posts" element={<Post />} />
+                    </Route>
+                </Routes>
         </div>
   )
 }

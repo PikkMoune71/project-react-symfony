@@ -59,14 +59,12 @@ export default function SignUp() {
     }
 
   const handleSubmit = async (e) => {
-    console.log('submit')
     e.preventDefault()
     axios.post('http://127.0.0.1:8000/api/register', {
         email: e.target[0].value,
         password: e.target[2].value,
       })
       .then((res) => {
-        console.log(res)
         navigate('/login')
       })
       .catch((err) => {
