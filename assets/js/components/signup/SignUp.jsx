@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import { Link, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,25 +10,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 export default function SignUp() {
     const [inputErrorEmail, setInputErrorEmail] = useState('')
     const [inputErrorPassword, setInputErrorPassword] = useState('')
     const [inputErrorPasswordCopy, setInputErrorPasswordCopy] = useState('')
+
+    const navigate = useNavigate()
 
     const validateEmail = (value) => {
         let error
@@ -59,9 +46,7 @@ export default function SignUp() {
     onchange = (e) => {
         const name = e.target.name
         const value = e.target.value
-        if (name === 'name') {
-        setInputErrorPseudo(validatePseudo(value))
-        } else if (name === 'email') {
+        if (name === 'email') {
         setInputErrorEmail(validateEmail(value))
         } else if (name === 'password') {
         setInputErrorPassword(validatePassword(value))
@@ -73,22 +58,20 @@ export default function SignUp() {
         }
     }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     console.log('submit')
-        e.preventDefault()
-        axios
-          .post('/api/register', {
-            username: e.target[0].value,
-            email: e.target[1].value,
-            password: e.target[2].value,
-          })
-          .then((res) => {
-            console.log(res)
-            // navigate('/signin')
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+    e.preventDefault()
+    axios.post('http://127.0.0.1:8000/api/register', {
+        email: e.target[0].value,
+        password: e.target[2].value,
+      })
+      .then((res) => {
+        console.log(res)
+        navigate('/login')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   return (
@@ -154,14 +137,13 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/login">
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

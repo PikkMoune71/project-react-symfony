@@ -31,7 +31,7 @@ const RoutesApp = () => {
                 {
                     user && <>
                         <li><Link to="/">Home</Link></li>
-                        {/* <li><Link to="/login">Login</Link></li> */}
+                        <li><Link to="/posts">Posts</Link></li>
                     
                         {
                             location.pathname !== "/login" && <button onClick={logout}>Logout</button>
