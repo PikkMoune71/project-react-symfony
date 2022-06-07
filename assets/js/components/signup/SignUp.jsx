@@ -58,7 +58,7 @@ export default function SignUp() {
         }
     }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     axios.post('http://127.0.0.1:8000/api/register', {
         email: e.target[0].value,

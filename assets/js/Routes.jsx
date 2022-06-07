@@ -6,6 +6,7 @@ import Post from './components/post/Post'
 import PrivateRoute from './components/PrivateRoute'
 import '../styles/app.css'
 import Home from './views/Home'
+import AddPost from './components/post/AddPost'
 
 const RoutesApp = () => {
     const useAuth = () => {
@@ -48,6 +49,7 @@ const RoutesApp = () => {
                     <Route path="/" element={<PrivateRoute/>}>   
                         <Route path="/" element={<Home />} />
                         <Route path="/posts" element={<Post />} />
+                        <Route path="/add-post" element={<AddPost />} />
                     </Route>
                 </Routes>
         </div>
