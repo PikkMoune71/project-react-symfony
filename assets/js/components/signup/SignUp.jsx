@@ -1,22 +1,37 @@
-import axios from 'axios'
-import React, {useState} from 'react'
-// import { useNavigate } from 'react-router-dom'
-axios.defaults.baseURL = 'http://localhost:8000'
+import React, {useState} from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
-function SignUp() {
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
+
+export default function SignUp() {
     const [inputErrorEmail, setInputErrorEmail] = useState('')
     const [inputErrorPassword, setInputErrorPassword] = useState('')
     const [inputErrorPasswordCopy, setInputErrorPasswordCopy] = useState('')
 
-    const validatePseudo = (value) => {
-        let error
-        if (!value) error = 'Champ requis'
-        else if (value.length > 12) error = '12 caractère maximum'
-        else if (value.length < 3) error = '3 caractères minimum'
-        else if (/[^a-zA-Z0-9]/.test(value)) error = 'Pas de caractère spéciaux'
-
-        return error
-    }
     const validateEmail = (value) => {
         let error
         if (!value) error = 'Champ requis'
@@ -58,8 +73,8 @@ function SignUp() {
         }
     }
 
-    const handleSubmit = (e) => {
-        console.log('submit')
+  const handleSubmit = (e) => {
+    console.log('submit')
         e.preventDefault()
         axios
           .post('/api/register', {
@@ -74,49 +89,80 @@ function SignUp() {
           .catch((err) => {
             console.log(err)
           })
-      }
-    return (
-        <div>
-            <div>
-                <h2>Créer un compte</h2>
-                <form onSubmit={handleSubmit}>
-                {/* <input
-                    name="name"
-                    type="text"
-                    placeholder="Nom d'utilisateur"
-                    onChange={(e) => onchange(e)}
-                />
-                <p>{inputErrorPseudo}</p> */}
-                <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    onChange={(e) => onchange(e)}
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={(e) => onchange(e)}
                 />
                 <p>{inputErrorEmail}</p>
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Mot de passe"
-                    onChange={(e) => onchange(e)}
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  autoComplete="new-password"
+                  onChange={(e) => onchange(e)}
                 />
                 <p>{inputErrorPassword}</p>
-                <input
-                    name="confirmPassword"
-                    type="password"
-                    placeholder="Vérification mot de passe"
-                    onChange={(e) => onchange(e)}
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="comfirmPassword"
+                  label="Comfirm Password"
+                  type="password"
+                  autoComplete="new-password"
+                  onChange={(e) => onchange(e)}
                 />
                 <p>{inputErrorPasswordCopy}</p>
-                <button type="submit">S'inscrire</button>
-                </form>
-                <div>
-                <p>Déjà inscrit ?</p>
-                <a href="signin">Connectez-vous</a>
-                </div>
-            </div>
-        </div>
-    )
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
+  );
 }
-
-export default SignUp

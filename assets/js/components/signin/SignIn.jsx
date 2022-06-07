@@ -1,61 +1,4 @@
-
-// export const SignIn = () => {
-//   const [credentials, setCredentials] = useState({
-//     username: "",
-//     password: ""
-//   })
-
-//   const handleChange = ({currentTarget}) => {
-//     const {value, name} = currentTarget
-//     setCredentials({
-//       ...credentials,
-//       [name]: value
-//     })
-//   }
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try{
-//       await authAPI.authenticate(credentials)
-//     }catch(error){
-//       console.log(error)
-//     }
-
-//   }
-//   return (
-//     <div className="containerLogin">
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <TextField 
-//           id="username"
-//           label="Email"
-//           type="text"
-//           name="username"
-//           onChange={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <TextField 
-//           id="password"
-//           label="Password"
-//           type="text"
-//           name="password"
-//           onChange={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <Button variant="contained" color="primary" type="submit">
-//             Connexion
-//           </Button>
-//         </div>
-//       </form>
-//     </div>
-//   )
-// }
-
-// export default SignIn
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -66,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import authAPI from '../../services/AuthAPI.js'
+import AuthContext from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -84,10 +29,14 @@ const theme = createTheme();
 
 export default function SignIn() {
 
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   })
+
+  const {setIsAuthenticated} = useContext(AuthContext)
     
 const handleChange = ({currentTarget}) => {
   const {value, name} = currentTarget
@@ -102,6 +51,9 @@ const handleSubmit = async (e) => {
 
   try{
     await authAPI.authenticate(credentials)
+    setIsAuthenticated(true)
+    navigate("/")
+
   }catch(error){
     console.log(error)
   }  
@@ -155,7 +107,7 @@ const handleSubmit = async (e) => {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

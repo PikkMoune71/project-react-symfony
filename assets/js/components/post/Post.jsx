@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import URL_POST from '../../config'
 
 function Post() {
   const [data, setData] = useState([]);

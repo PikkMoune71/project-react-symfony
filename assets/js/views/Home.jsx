@@ -1,11 +1,9 @@
 import React from 'react'
-import Menu from '../components/menu/Menu'
 
 function Home() {
   return (
     <div>
       <h2>Home</h2>
-      <Menu />
       {/* {
         (AuthAPI.isAuthenticated() == true 
         ? <div>
