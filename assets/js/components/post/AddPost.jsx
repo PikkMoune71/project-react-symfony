@@ -9,10 +9,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 const theme = createTheme();
 
 export default function SignUp() {
+    const token = window.localStorage.getItem("authToken");
+    // const {username} = jwtDecode(token)
+    console.log(jwtDecode(token));
+
     const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({
@@ -21,7 +26,7 @@ export default function SignUp() {
         user: "/api/users/17"
     })
 
-    const token = window.localStorage.getItem("authToken");
+    
 
     const handleChange = ({currentTarget}) => {
         const {value, name} = currentTarget
@@ -29,7 +34,7 @@ export default function SignUp() {
             ...credentials,
             [name]: value
         })
-      }
+    }
 
     const handleSubmit = (e) => {    
         e.preventDefault()

@@ -5,6 +5,7 @@ import '../../../styles/app.css'
 
 function Post() {
   const [data, setData] = useState([]);
+  const [count, setCount] = useState();
   
   useEffect(() => {
     const token = window.localStorage.getItem("authToken")
@@ -12,10 +13,10 @@ function Post() {
       const res = await axios('http://localhost:8000/api/posts', {
           headers: {
               'Authorization': `Bearer ${token}` 
-            }
+            },
       });
-
       setData(res.data)
+      setCount(res.data.length)
     };
 
     fetchData();
@@ -24,13 +25,15 @@ function Post() {
   return (
     <div>
       <Link to="/add-post"><button className='add-post'>Ajouter un Post</button></Link>
+      <h4 className='count'>Nombre de posts : {count}</h4>
       <div className='container_card'>
             {data.map(item => (
               <div key={item.id} className="card">
                 <h4>{item.title}</h4>
                 <p>{item.content}</p>
-                <span>{item.user}</span>
+                {/* <span>De : {item.user}</span> */} 
               </div>
+              
             ))}
       </div>
     </div>

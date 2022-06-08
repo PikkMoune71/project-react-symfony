@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PostRepository;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PostRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ApiResource(
@@ -25,7 +27,7 @@ class Post
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'post')]
     #[ORM\JoinColumn(nullable: false)]
-    private $user;
+    private UserInterface $user;
 
     public function getId(): ?int
     {
@@ -56,12 +58,12 @@ class Post
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser(): UserInterface
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(UserInterface $user): self
     {
         $this->user = $user;
 
